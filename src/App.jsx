@@ -5,8 +5,7 @@ function App() {
   return (
     <>
     salam
-    rufet edited
-    nigar edited as well
+    yeni deyisiklik
     </>
   )
 }
