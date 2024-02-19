@@ -5,7 +5,7 @@ function App() {
   return (
     <>
     salam
-    shjdhsdhjsdhjdhcjchdscdsjhd
+    yeni deyisiklik
     </>
   )
 }
