@@ -1,13 +1,15 @@
 import './App.css'
 import { BrowserRouter } from 'react-router-dom'
 import { Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import SignIn from './Pages/SignIn';
-import SignUp from './Pages/SignUp';
+import SignUp from './Pages/SignUp/SignUp';
 
 function App() {
 
   return (
     <>
+    <div className='main'></div>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<SignIn />} />
@@ -16,9 +18,8 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-
+    
     </>
   )
 }
-
 export default App
