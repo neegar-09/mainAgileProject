@@ -9,24 +9,25 @@ const SignUp = () => {
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">
-          <img src={logo} alt="logo" />
-        </Navbar.Brand>
-      </Container>
+        <Container>
+          <Navbar.Brand href="#home">
+            <img src={logo} alt="logo" />
+          </Navbar.Brand>
+        </Container>
       </Navbar>
+      
       <Container>
-      <Row>
-        <Col sm={4} className='d-flex justify-content-center section-left'>
-          <Col sm={8}>
-          <h1>welcome</h1>
-          <p>You already have an account?Login with your personal info.</p>
-          <Button variant="light">Light</Button>
+        <Row>
+          <Col sm={4} className='d-flex justify-content-center section-left'>
+            <Col sm={8}>
+              <h1>welcome</h1>
+              <p>You already have an account?Login with your personal info.</p>
+              <Button variant="light">Light</Button>
+            </Col>
+
           </Col>
-          
-        </Col>
-        <Col sm={8}>sm=4</Col>
-      </Row>
+          <Col sm={8}>sm=4</Col>
+        </Row>
       </Container>
     </>
   )
