@@ -1,7 +1,7 @@
 import { Col, Container, Navbar, Row, InputGroup, Button } from "react-bootstrap"
 import Form from 'react-bootstrap/Form'
 import * as Icon from 'react-bootstrap-icons';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logo from '../../assets/AGILE-SOLUTIONS-1-1024x725-1 2.png'
 
 
@@ -10,11 +10,24 @@ const defaultValues = {
   bgColor: '#FFFFFF',
   hoverColor: '#0991A4',
 }
+
+
 const SignIn = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform sign-in logic here (e.g., authentication)
+
+    // Redirect to home page after successful sign-in
+    navigate('/home');
+  };
+
+
   return (
     <Container style={{ backgroundColor: defaultValues.bgColor, fontFamily: 'Montserrat', margin: '0px', width: '100vw' }}>
-      <Row className="d-flex align-items-center" style={{width: 'inherit'}}>
-        <Col xs={7} style={{ height: '100vh', maxWidth: '750px',minWidth: '380px', padding: '0px 4em' }}>
+      <Row className="d-flex align-items-center" style={{ width: 'inherit' }}>
+        <Col xs={7} style={{ height: '100vh', maxWidth: '750px', minWidth: '320px', padding: '0px 4em' }}>
 
           <Navbar.Brand href="#home">
             <img src={logo} alt="logo" />
@@ -22,7 +35,7 @@ const SignIn = () => {
 
           <h1 style={{ marginBottom: '1.5em', color: defaultValues.mainColor, fontWeight: 'bold' }} className="text-center">Sign in</h1>
 
-          <Form style={{ display: 'flex', flexDirection: 'column' }}>
+          <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
             <Form.Group className="mb-2">
               <InputGroup>
                 <InputGroup.Text>
@@ -48,7 +61,7 @@ const SignIn = () => {
             </Form.Group>
 
             <Form.Check label='Remember me' className="small m-2" />
-            <Link to="/forgot-passwor" className="mb-4 text-center">
+            <Link to="/forgot-password" className="mb-4 text-center">
               Forgot your password?
             </Link>
             <Button type="submit" style={{ textAlign: 'center', minWidth: '200px', alignSelf: 'center' }}>SIGN IN</Button>
