@@ -1,3 +1,27 @@
+
+input{
+    background-color: #F3F7F6 !important;
+    border: 0 !important;
+}
+.svg{
+    top: 20px;
+    left: 10px;
+}
 .section-left{
-    background-color:51B5C3;
+    background-color:#51B5C3;
+    padding: 5rem;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.btn-signin{
+    background-color: #51B5C3;
+    border-radius: 35px;
+}
+.sec-right-text{
+    color: #51B5C3;
+    font-weight: 600;
+}
+.btn-signup{
+    border-radius: 35px;
+    background-color: #51B5C3 ;
 }
