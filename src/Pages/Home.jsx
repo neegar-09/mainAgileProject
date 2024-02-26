@@ -1,3 +1,4 @@
+import React from 'react'
 import Header from '../Components/Header'
 import { Container, Row, Col } from 'react-bootstrap';
 import CompanyBox from '../Components/CompanyBox'
