@@ -1,10 +1,7 @@
-import "./ProductDetail.css"
-import Header from "../../Components/Header"
+
 const ProductDetail = () => {
   return (
-   <>
-    <Header/>
-   </>
+    <div>ProductDetail</div>
   )
 }
 
