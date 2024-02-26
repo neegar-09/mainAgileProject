@@ -2,8 +2,8 @@
 
 const BoxDetail = () => {
   return (
-    <div>
-
+    <div className="box">
+        
     </div>
   )
 }
