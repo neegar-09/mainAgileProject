@@ -6,7 +6,7 @@ import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
 import Home from './Pages/Home';
 
-import Buy from './Pages/Buy';
+// import Buy from './Pages/Buy';
 import Support from './Pages/Support';
 
 
