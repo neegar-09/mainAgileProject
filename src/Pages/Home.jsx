@@ -7,7 +7,7 @@ import Box from '../Components/Box'
 const Home = () => {
     return (
         <div style={{ height: '100vh' }}>
-            <Header />
+            <Header title="Home Page"/>
             <Container style={{marginTop: '120px'}}>
                 <Row>
                     <Col xs={12} md={6} lg={4}>
