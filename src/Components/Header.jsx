@@ -2,11 +2,11 @@ import React from 'react'
 import * as Icon from 'react-bootstrap-icons';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
-const Header = () => {
+const Header = (props) => {
   return (
     
       <Navbar fixed='top' expand="lg" style={{ backgroundColor: '#51B5C3', borderBottomLeftRadius: '20px', borderBottomRightRadius: '20px', padding: '20px 60px' }}>
-        <Navbar.Brand href="#home">Home</Navbar.Brand>
+        <Navbar.Brand href="#home">{props.title}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
           <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>

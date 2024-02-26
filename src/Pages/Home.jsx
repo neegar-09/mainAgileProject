@@ -1,3 +1,4 @@
+import React from 'react'
 import Header from '../Components/Header'
 import { Container, Row, Col } from 'react-bootstrap';
 import CompanyBox from '../Components/CompanyBox'
@@ -6,7 +7,7 @@ import Box from '../Components/Box'
 const Home = () => {
     return (
         <div style={{ height: '100vh' }}>
-            <Header />
+            <Header title="Home Page"/>
             <Container style={{marginTop: '120px'}}>
                 <Row>
                     <Col xs={12} md={6} lg={4}>
