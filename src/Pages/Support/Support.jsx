@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../Components/Header'
+import Header from '../../Components/Header'
 import { Container, Table, Row, Col, Button } from 'react-bootstrap'
-
+import "./Support.css"
 const Support = () => {
 
     const mockData = [
@@ -12,10 +12,10 @@ const Support = () => {
 
 
     return (
-        <div>
+        <div className='support'>
             <Header title='Support' />
             <Container style={{ marginTop: '120px' }}>
-                <Row className="justify-content-center mt-3">
+                <Row className="justify-content-center mt-3 mb-4">
                     <Col md="" className="mb-2">
                         <p className='mb-0'>+994(50)1234567 - Azerbaijan</p>
                         <p className='mb-0'>Monday - Friday 9:30 AM - 6:30 PM Available</p>
@@ -27,17 +27,17 @@ const Support = () => {
                 </Row>
                 <Row>
                     <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Ticket ID</th>
+                        <thead className=''>
+                            <tr className='support-table-tr'>
+                                <th className='black'>Title</th>
+                                <th className='black'>Date</th>
+                                <th className='black'>Status</th>
+                                <th className='black'>Ticket ID</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                        </thead>                      
+                        <tbody className='mg-5'>
                             {mockData.map((item, index) => (
-                                <tr key={index}>
+                                <tr className="gray-bg" key={index}>
                                     <td>{item.title}</td>
                                     <td>{item.date}</td>
                                     <td>{item.status}</td>
