@@ -60,8 +60,11 @@ const SignIn = () => {
               </InputGroup>
             </Form.Group>
 
-            <Form.Check label='Remember me' className="small m-2" />
-            <Link to="/forgot-password" className="mb-4 text-center">
+            <Container style={{display: 'flex', alignItems: 'center'}}>
+                <input type="checkbox"  className="m-2" />
+                <label style={{fontSize: 'small'}}>Remember me</label>
+            </Container>
+            <Link to="/forgot" className="mb-4 text-center">
               Forgot your password?
             </Link>
             <Button type="submit" style={{ textAlign: 'center', minWidth: '200px', alignSelf: 'center' }}>SIGN IN</Button>

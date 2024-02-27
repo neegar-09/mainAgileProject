@@ -8,12 +8,16 @@ import Home from './Pages/Home';
 import Buy from "./Pages/Buy"
 
 // import Buy from './Pages/Buy';
-import Support from './Pages/Support';
+import Support from './Pages/Support/Support';
 
 
 
 import Licenses from './Pages/Licenses/Licenses';
 import ProductDetail from './Pages/ProductDetail/ProductDetail';
+
+import ForgotPassword from './Pages/ForgotPassword';
+import ResetPage from './Pages/ResetPage';
+
 import CreateTicket from './Pages/CreateTicket/CreateTicket';
 
 
@@ -30,8 +34,13 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/licenses" element={<Licenses />} />
             <Route path="/productDetail" element={<ProductDetail />} />
+
+            <Route path="/forgot" element={<ForgotPassword />} />
+            <Route path="/reset/:id" element={<ResetPage />} />
+
             <Route path="/createTicket" element={<CreateTicket/>} />
             <Route path="/buy" element={<Buy/>} />
+
 
           </Routes>
         </BrowserRouter>
