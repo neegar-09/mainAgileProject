@@ -1,7 +1,15 @@
 import { useState } from "react"
 import BoxDetail from "../../Components/BoxDetail"
 import { Container, Row, Card, Col, Button } from "react-bootstrap"
+import Header from "../../Components/Header"
+import './ProductDetail.css';
+import { useNavigate } from "react-router-dom"
+
+
 const ProductDetail = () => {
+
+  const navigate = useNavigate();
+
   const [data, setData] = useState([
     {
       title: "Product",
@@ -26,15 +34,19 @@ const ProductDetail = () => {
       info1: "29.09.2022",
       info2: "29.09.2024"
     },
-
   ])
+
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <>
-      <Container className="p-5">
+      <Header title='License Details' />
+      <Container className="p-5" style={{ marginTop: '120px' }}>
         <Row>
           <BoxDetail data={data} />
-          <Col md={4} className="mt-4">
-            <Card className='rounded-4 p-3 border-0' >
+          <Col md={4} >
+            <Card style={{ boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.5)' }} className='rounded-4 p-3 border-0' >
               <Card.Body>
                 <Card.Title className='text-center mb-2 fw-bold'>Status</Card.Title>
                 <Card.Subtitle className="mb-2 fs-5 mb-3 text-center">Active</Card.Subtitle>
@@ -45,12 +57,12 @@ const ProductDetail = () => {
 
         {/* registration */}
         <Row>
-          <Col md={12} className="mt-4">
-            <Card className='rounded-4 p-3 border-0' >
+          <Col md={12}>
+            <Card className='rounded-4 p-3 border-0' style={{ boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.5)' }} >
               <Card.Body>
                 <Card.Title className='text-center mb-2 fw-bold'>Registration</Card.Title>
                 <Row>
-                  <Col md={6}>
+                  <Col md={6} >
                     <Card.Body className="d-flex flex-column align-items-center">
                       <Card.Subtitle className="mb-2 fw-bold fs-5 mb-3">Company name : <span className='fw-normal'>PashaBank</span></Card.Subtitle>
                       <Card.Subtitle className="mb-2 fw-bold fs-5 mb-3">Email : <span className='fw-normal'>pashabank@pasha.az</span></Card.Subtitle>
@@ -71,7 +83,7 @@ const ProductDetail = () => {
         {/* back button */}
         <Row className="my-5">
           <Col md={12} className="d-flex justify-content-center">
-          <Button variant="danger" className=" rounded-5 px-5 py-3 fs-5 fw-bold border-0">Back</Button>
+            <Button onClick={goBack} variant="danger" className=" rounded-5 px-5 py-3 fs-5 fw-bold border-0">Back</Button>
           </Col>
         </Row>
       </Container>

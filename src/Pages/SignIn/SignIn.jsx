@@ -26,8 +26,8 @@ const SignIn = () => {
 
   return (
     <Container style={{ backgroundColor: defaultValues.bgColor, fontFamily: 'Montserrat', margin: '0px', width: '100vw' }}>
-      <Row className="d-flex align-items-center" style={{ width: 'inherit' }}>
-        <Col xs={7} style={{ height: '100vh', maxWidth: '750px', minWidth: '320px', padding: '0px 4em' }}>
+      <Row className="d-flex align-items-center justify-content-center" style={{ width: 'inherit' }}>
+        <Col /* xs=7*/xs={7} style={{ height: '100vh', maxWidth: '750px', minWidth: '320px', padding: '0px 4em' }}>
 
           <Navbar.Brand href="#home">
             <img src={logo} alt="logo" />
@@ -72,7 +72,7 @@ const SignIn = () => {
 
         </Col>
 
-        <Col className="text-center" style={{ backgroundColor: defaultValues.mainColor, color: defaultValues.bgColor, height: '100vh', padding: '11em 3em' }}>
+        <Col  className="text-center" style={{ backgroundColor: defaultValues.mainColor, color: defaultValues.bgColor, height: '100vh', padding: '11em 3em' }}>
           <h1 style={{ marginBottom: '1.5em' }} className="text-center">Welcome</h1>
 
           <p>Don’t have an account yet?
