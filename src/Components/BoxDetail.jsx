@@ -7,7 +7,7 @@ const BoxDetail = ({ data }) => {
     <>
       {
         data.map(card => (
-          <Col md={4} key={card.title}>
+          <Col md={4} key={card.title} className='mb-3'>
             <Card className='rounded-4 p-3 border-0' >
               <Card.Body>
                 <Card.Title className='text-center mb-2 fw-bold'>{card.title}</Card.Title>

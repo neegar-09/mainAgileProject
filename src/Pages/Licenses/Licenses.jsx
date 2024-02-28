@@ -30,39 +30,36 @@ const Licenses = () => {
                                 <Button>
                                     <HiDotsVertical className="fs-4" />
                                 </Button>
-
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
             <Container>
                 <Row className="p-4 rounded-4 bg-black align-items-center">
-                    <Col sm={2}>
+                    <Col  >
                         <ListGroup.Item className="text-white fw-bold fs-5 text-center">Product</ListGroup.Item>
                     </Col>
 
-                    <Col sm={2}>
+                    <Col  >
                         <ListGroup.Item  className="text-white fw-bold fs-5 text-center">Users</ListGroup.Item>
                     </Col>
 
-                    <Col sm={2}>
+                    <Col>
                         <ListGroup.Item  className="text-white fw-bold fs-5 text-center">Expiry date</ListGroup.Item>
                     </Col>
 
-                    <Col sm={2}>
+                    <Col>
                         <ListGroup.Item  className="text-white fw-bold fs-5 text-center">Status</ListGroup.Item>
                     </Col>
 
-                    <Col sm={2}>
+                    <Col>
                         <ListGroup.Item className="text-center fs-5 text-white">
                             <FaFilter/>
                         </ListGroup.Item>
                     </Col>
-
-                    <Col sm={2}>
-                        <ListGroup.Item><Button className="rounded-5 px-5 py-3 fs-5 fw-bold bg-green border-0"> Buy</Button></ListGroup.Item>
+                    <Col>
+                        <ListGroup.Item><Button className="rounded-5 px-lg-5 py-lg-3 px-sm-3 py-sm-2 fs-sm-6 fs-lg-5 fw-bold bg-green border-0"> Buy</Button></ListGroup.Item>
                     </Col>
                 </Row>
             </Container>

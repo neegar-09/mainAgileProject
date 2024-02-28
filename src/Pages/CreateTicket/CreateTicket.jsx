@@ -4,9 +4,9 @@ import Form from 'react-bootstrap/Form';
 
 const CreateTicket = () => {
   return (
-    <div style={{padding: "5rem"}}>
+    <div className='p-sm-3 p-lg-5'>
       <Header title="Create Ticket" />
-      <Container style={{marginTop: "90px" }} className='bg-white p-5 rounded-5 '>
+      <Container style={{marginTop: "90px" }} className='bg-white p-5 rounded-5 mb-5'>
         <Row>
           <Col md={8}>
             <Form>
@@ -27,12 +27,11 @@ const CreateTicket = () => {
                 <Form.Control as="textarea" rows={5} placeholder="agilesolutions@agile.az" />
               </Form.Group>
               <Row className='my-5'>
-                <Col md={6}>
-                  <Button variant="danger" className=" rounded-5 px-5 py-3 fs-5 fw-bold border-0">Back</Button>
-
+                <Col className='mb-3'>
+                  <Button variant="danger" className=" rounded-5 px-lg-5 py-lg-3 fs-6 px-sm-4 py-sm-3 fw-bold border-0">Back</Button>
                 </Col>
-                <Col md={6} className='d-flex justify-content-end'>
-                  <Button className=" rounded-5 px-5 py-3 fs-5 fw-bold border-0 bg-green">Send a request</Button>
+                <Col  className=''>
+                  <Button className=" rounded-5 px-lg-5 py-lg-3 fs-6 px-sm-4 py-sm-3 fw-bold border-0 bg-green">Send a request</Button>
 
                 </Col>
               </Row>
