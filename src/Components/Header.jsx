@@ -29,7 +29,7 @@ const Header = (props) => {
               <NavDropdown.Item as={Link} to="/support">Support</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/settings">Settings</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/logout">Logout</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/signin">Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

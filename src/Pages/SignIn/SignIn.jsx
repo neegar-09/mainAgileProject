@@ -44,6 +44,7 @@ const SignIn = () => {
                 <Form.Control
                   type="email"
                   placeholder="Email"
+                  required
                 />
               </InputGroup>
             </Form.Group>
@@ -56,6 +57,7 @@ const SignIn = () => {
                 <Form.Control
                   type="password"
                   placeholder="Password"
+                  required
                 />
               </InputGroup>
             </Form.Group>
@@ -78,7 +80,7 @@ const SignIn = () => {
           <p>Don’t have an account yet?
             Create an account here. </p>
           <Link className="" style={{ textDecoration: 'none' }} to="/signup" >
-            <Button style={{ backgroundColor: defaultValues.mainColor }}>SignUp</Button>
+            <Button style={{ backgroundColor: defaultValues.mainColor }}>SIGN UP</Button>
           </Link>
         </Col>
       </Row>
