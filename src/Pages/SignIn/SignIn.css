@@ -1,0 +1,5 @@
+@media (max-width: 568px) {
+    .sign-in {
+      font-size: 13px; /* Font size for screens smaller than or equal to 768px */
+    }
+}

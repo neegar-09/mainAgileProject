@@ -6,47 +6,45 @@ import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
 import Home from './Pages/Home';
 import Buy from "./Pages/Buy"
-
-// import Buy from './Pages/Buy';
 import Support from './Pages/Support/Support';
-
-
-
 import Licenses from './Pages/Licenses/Licenses';
 import ProductDetail from './Pages/ProductDetail/ProductDetail';
-
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPage from './Pages/ResetPage';
-
 import CreateTicket from './Pages/CreateTicket/CreateTicket';
-
+import { useState } from 'react';
+import Context from './Context/Context';
 
 function App() {
 
+  let [loggedIn, setLoggedIn] = useState();
+
+  let data = {
+    loggedIn, setLoggedIn
+  }
+
   return (
-    <>
-      <div className="main">
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<SignIn />} />
-            <Route path='/support' element={<Support />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/licenses" element={<Licenses />} />
-            <Route path="/productDetail" element={<ProductDetail />} />
-
-            <Route path="/forgot" element={<ForgotPassword />} />
-            <Route path="/reset/:id" element={<ResetPage />} />
-
-            <Route path="/createTicket" element={<CreateTicket/>} />
-            <Route path="/buy" element={<Buy/>} />
-
-
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </>
+    <Context.Provider value={data}>
+      <>
+        <div className="main">
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<SignIn />} />
+              <Route path='/support' element={<Support />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/licenses" element={<Licenses />} />
+              <Route path="/productDetail" element={<ProductDetail />} />
+              <Route path="/forgot" element={<ForgotPassword />} />
+              <Route path="/reset/:id" element={<ResetPage />} />
+              <Route path="/createTicket" element={<CreateTicket/>} />
+              <Route path="/buy" element={<Buy/>} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </>
+    </Context.Provider>
   )
 }
 export default App;
