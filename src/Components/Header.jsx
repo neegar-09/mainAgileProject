@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Icon from 'react-bootstrap-icons';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Header = (props) => {
   return (
@@ -23,12 +24,12 @@ const Header = (props) => {
           </div>
           <Nav className="ml-auto">
             <NavDropdown title='Menu' id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Dashboard</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Licenses</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Support</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4">Settings</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/home">Dashboard</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/licenses">Licenses</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/support">Support</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/settings">Settings</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.5">Logout</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/logout">Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

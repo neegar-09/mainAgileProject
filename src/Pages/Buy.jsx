@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import Header from '../Components/Header'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Buy = () => {
-
+    let navigate = useNavigate();
     // const buttonStyle = {
     //     maxWidth: '200px',
     //     borderRadius: '15px',
@@ -49,6 +50,11 @@ const Buy = () => {
         }
     };
 
+
+    const goBack = () => {
+        navigate(-1); // Navigate to the previous page
+    };
+
     return (
         <>
             <Header title='Buy' />
@@ -90,7 +96,7 @@ const Buy = () => {
 
                             <Row className="flex-direction-row justify-content-center mt-3">
                                 <Col md="" className="mb-2 text-center">
-                                    <Button style={{ width: '130px', borderRadius: '15px', backgroundColor: '#E02B2B', border: '0px' }} variant="primary">Back</Button>
+                                    <Button onClick={goBack} style={{ width: '130px', borderRadius: '15px', backgroundColor: '#E02B2B', border: '0px' }} variant="primary">Back</Button>
                                 </Col>
                                 <Col md="" className="mb-2 text-center">
                                     <Button style={{ width: '130px', borderRadius: '15px', backgroundColor: '#51B5C3', border: '0px' }} variant="secondary">Send a request</Button>
