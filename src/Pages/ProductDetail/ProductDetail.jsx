@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom"
 
 
 const ProductDetail = () => {
-
   const navigate = useNavigate();
-
   const [data, setData] = useState([
     {
       title: "Product",
@@ -18,7 +16,6 @@ const ProductDetail = () => {
       info1: "Dialer",
       info2: "S2KM-AO4J-TMXA-ZCJI"
     },
-
     {
       title: "Users",
       feature1: "Total",
@@ -26,7 +23,6 @@ const ProductDetail = () => {
       info1: "25",
       info2: "18"
     },
-
     {
       title: "Date",
       feature1: "Order",
@@ -44,7 +40,7 @@ const ProductDetail = () => {
       <Header title='License Details' />
       <Container className="p-5" style={{ marginTop: '120px' }}>
         <Row>
-          <BoxDetail data={data} />
+          <BoxDetail data={data}/>
           <Col md={4} >
             <Card style={{ boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.5)' }} className='rounded-4 p-3 border-0' >
               <Card.Body>

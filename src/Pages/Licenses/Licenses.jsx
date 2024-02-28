@@ -51,8 +51,8 @@ const Licenses = () => {
                         </ListGroup.Item>
                     </Col>
 
-                    <Col sm={2}>
-                        <ListGroup.Item><Button onClick={goToBuy} className="rounded-5 px-5 py-3 fs-5 fw-bold bg-green border-0"> Buy</Button></ListGroup.Item>
+                    <Col>
+                        <ListGroup.Item><Button onClick={goToBuy} className="rounded-5 px-lg-5 py-lg-3 fs-5 fw-bold bg-green border-0"> Buy</Button></ListGroup.Item>
                     </Col>
                 </Row>
             </Container>
