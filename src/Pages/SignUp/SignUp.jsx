@@ -13,13 +13,13 @@ import { IoMdLock } from "react-icons/io";
 const SignUp = () => {
   return (
     <>
-  <div className="main">
+  <div className='p-5'>
   <Container className='bg-white rounded-5'>
         <Row>
-          <Col sm={4} className='section-left rounded-bottom-start-5 '>
+          <Col lg={4} md={12}  className='section-left rounded-bottom-start-5 p-lg-5'>
             <Col className='mt-5'>
               <h1 className='text-white py-4 text-center'>Welcome</h1>
-              <p className='text-white lead py-4 text-center'>You already have an account?Login with your personal info.</p>
+              <p className='text-white lead py-4 text-center'>You already have an account? Login with your personal info.</p>
               <div className="d-flex justify-content-center my-2">
                 <Col sm={7}>
                   <Button variant="light" className='btn-signin text-white w-100 fs-5 shadow mb-5'>Sign In</Button>
@@ -28,11 +28,11 @@ const SignUp = () => {
             </Col>
 
           </Col>
-          <Col sm={8}>
+          <Col lg={8} md={12}>
             <Row>
-              <Col sm={9} className='d-flex flex-column align-items-center'>
+              <Col md={9} sm={12} className='d-flex flex-column align-items-center'>
                 <h1 className='sec-right-text text-center my-5'>Create account</h1>
-                <Col sm={9}>
+                <Col md={9} sm={12} >
                 <Form>
                   <Form.Group className="mb-4  position-relative" controlId="exampleForm.ControlInput1">
                   <FaUser className='position-absolute svg'/>
@@ -81,6 +81,8 @@ const SignUp = () => {
         </Row>
       </Container>
   </div>
+  
+ 
       
     </>
   )
