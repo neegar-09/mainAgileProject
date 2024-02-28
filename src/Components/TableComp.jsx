@@ -2,9 +2,17 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { Container } from 'react-bootstrap'
+import { useNavigate } from "react-router-dom"
 
 
 const TableComp = () => {
+
+    const navigate = useNavigate();
+    
+    const goToDetail = () => {
+        navigate('/productDetail');
+    }
+
     return (
         <>
          <Container>
@@ -22,7 +30,7 @@ const TableComp = () => {
                     <p className='text-center m-0 bg-light shadow-sm p-2 rounded'>active</p>
                 </Col>
                 <Col sm={4} className='text-center p-0 bg-light shadow-sm rounded d-flex align-items-center justify-content-center'>
-                    <Button className='text-center m-0 btn-blue rounded-5 p-0 px-4 py-1 border-0'> Details</Button>
+                    <Button onClick={goToDetail} className='text-center m-0 btn-blue rounded-5 p-0 px-4 py-1 border-0'> Details</Button>
                 </Col>
             </Row>
             </Container>

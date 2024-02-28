@@ -1,15 +1,22 @@
 import React from 'react'
 import Header from '../../Components/Header'
 import { Container, Table, Row, Col, Button } from 'react-bootstrap'
+import { useNavigate } from "react-router-dom"
 import "./Support.css"
-const Support = () => {
 
+
+const Support = () => {
+    const navigate = useNavigate();
+    
     const mockData = [
         { title: 1, date: '2024', status: 'active', ticketId: '123456' },
         { title: 2, date: '2024', status: 'active', ticketId: '123456' },
         { title: 3, date: '2024', status: 'active', ticketId: '123456' }
     ];
 
+    const goToCreateTicket = () => {
+        navigate('/createTicket');
+    }
 
     return (
         <div className='support'>
@@ -22,7 +29,7 @@ const Support = () => {
                         <p>Support Cases: Unlimited</p>
                     </Col>
                     <Col md="" className="mb-2 text-center">
-                        <Button style={{ width: '230px', borderRadius: '15px', backgroundColor: '#61CFDE', border: '0px' }} variant="secondary">Create New Ticket</Button>
+                        <Button onClick={goToCreateTicket} style={{ width: '230px', borderRadius: '15px', backgroundColor: '#61CFDE', border: '0px' }} variant="secondary">Create New Ticket</Button>
                     </Col>
                 </Row>
                 <Row>
@@ -34,7 +41,7 @@ const Support = () => {
                                 <th className='black'>Status</th>
                                 <th className='black'>Ticket ID</th>
                             </tr>
-                        </thead>                      
+                        </thead>
                         <tbody className='mg-5'>
                             {mockData.map((item, index) => (
                                 <tr className="gray-bg" key={index}>
