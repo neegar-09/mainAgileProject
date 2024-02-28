@@ -29,23 +29,23 @@ const Licenses = () => {
 
             <Container style={{marginTop: '120px'}}>
                 <Row className="p-4 rounded-4 bg-black align-items-center">
-                    <Col sm={2}>
+                    <Col  >
                         <ListGroup.Item className="text-white fw-bold fs-5 text-center">Product</ListGroup.Item>
                     </Col>
 
-                    <Col sm={2}>
+                    <Col  >
                         <ListGroup.Item  className="text-white fw-bold fs-5 text-center">Users</ListGroup.Item>
                     </Col>
 
-                    <Col sm={2}>
+                    <Col>
                         <ListGroup.Item  className="text-white fw-bold fs-5 text-center">Expiry date</ListGroup.Item>
                     </Col>
 
-                    <Col sm={2}>
+                    <Col>
                         <ListGroup.Item  className="text-white fw-bold fs-5 text-center">Status</ListGroup.Item>
                     </Col>
 
-                    <Col sm={2}>
+                    <Col>
                         <ListGroup.Item className="text-center fs-5 text-white">
                             <FaFilter/>
                         </ListGroup.Item>
