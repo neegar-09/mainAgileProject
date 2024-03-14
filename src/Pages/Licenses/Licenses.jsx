@@ -1,4 +1,3 @@
-import "./Licenses.css"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -9,9 +8,15 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { FaFilter } from "react-icons/fa6";
+
+// Custom styles
 import TableComp from "../../Components/TableComp";
 import Header from "../../Components/Header";
 import { useNavigate } from "react-router-dom"
+
+// ASSETS
+import "./Licenses.css"
+
 
 const Licenses = () => {
 
