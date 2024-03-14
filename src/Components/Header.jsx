@@ -33,7 +33,7 @@ const Header = (props) => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Navbar>    
+      </Navbar>   
   )
 }
 
