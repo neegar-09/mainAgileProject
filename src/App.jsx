@@ -13,14 +13,14 @@ import ForgotPassword from './Pages/ForgotPassword';
 import ResetPage from './Pages/ResetPage';
 import CreateTicket from './Pages/CreateTicket/CreateTicket';
 import { useState } from 'react';
-import Context from './Context/Context';
+import Context from './Context/context';
 
 function App() {
 
-  let [loggedIn, setLoggedIn] = useState();
+  let [token, setToken] = useState();
 
   let data = {
-    loggedIn, setLoggedIn
+    token, setToken
   }
 
   return (

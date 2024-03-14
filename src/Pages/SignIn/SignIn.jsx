@@ -4,8 +4,9 @@ import * as Icon from 'react-bootstrap-icons';
 import { Link, useNavigate } from "react-router-dom"
 import logo from '../../assets/AGILE-SOLUTIONS-1-1024x725-1 2.png'
 import { useContext, useRef, useState, useEffect } from "react";
-import context from "../../Context/Context";
+import context from "../../Context/context";
 import './SignIn.css'
+import axios from "axios";
 
 const defaultValues = {
   mainColor: '#51B5C3',
@@ -17,22 +18,27 @@ const defaultValues = {
 const SignIn = () => {
   const navigate = useNavigate();
 
-  let { loggedIn, setLoggedIn } = useContext(context);
+  let { token, setToken } = useContext(context);
+  let rememberMe = useRef(null);
 
   const [formValues, setFormValues] = useState({
     email: '',
     pass: '',
+    rememberMe: rememberMe,
   });
 
+
+
   let rememberMe = useRef(null);
- 
+
 
   const handleInputChange = (event) => {
     console.log(event.target.name + '\n' + event.target.value);
     const { name, value } = event.target;
     setFormValues({
       ...formValues,
-      [name]: value
+      [name]: value,
+      rememberMe: rememberMe
     });
   };
 
@@ -44,8 +50,25 @@ const SignIn = () => {
       localStorage.setItem('token', 'user-token-123');
       localStorage.setItem('email', formValues.email);
       localStorage.setItem('pass', formValues.pass);
+    }
+    else {
 
     }
+    console.log(formValues.rememberMe);
+    console.log(formValues);
+
+    // const url = 'http://192.168.0.106:5274/api/Product/GetAllProducts';
+    axios.post('http://192.168.0.102:5274/api/Auth/Login', {
+      email: formValues.email,
+      password: formValues.pass,
+      rememberMe: rememberMe.current.checked,
+    }).then((res) => {
+      console.log('response: ', res);
+      setToken(res.data.accessToken);
+    }).catch(error => {
+      // Handle error
+      console.error('Error:', error);
+    });
 
     // Redirect to home page after successful sign-in
     navigate('/home');
@@ -106,7 +129,7 @@ const SignIn = () => {
             </Form.Group>
 
             <Container style={{ display: 'flex', alignItems: 'center' }}>
-              <input ref={rememberMe} type="checkbox" className="m-2" />
+              <input ref={rememberMe} name="rememberMe" onChange={handleInputChange} value={formValues.rememberMe} type="checkbox" className="m-2" />
               <label style={{ fontSize: 'small' }}>Remember me</label>
             </Container>
             <Link to="/forgot" className="mb-4 text-center">
