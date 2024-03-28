@@ -15,7 +15,7 @@ import Header from "../../Components/Header";
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
 import { useContext, useEffect } from "react";
-import Context from "../../Context/Context";
+import Context from "../../Context/context";
 
 // ASSETS
 import "./Licenses.css"
@@ -23,11 +23,20 @@ import "./Licenses.css"
 
 const Licenses = () => {
 
-    let { token, setToken } = useContext(Context);
+    let { token, setToken, setLicense, licences } = useContext(context);
 
     const navigate = useNavigate();
     const goToBuy = () => {
         navigate('/buy');
+
+        // axios.post('http://192.168.0.107:5274/api/Licenses/GetByIdLicenses', ).then((res) => {
+        //     // console.log('response: ', res);
+        //     // console.log(res.data.accessToken);
+            
+        // }).catch(error => {
+        //     // Handle error
+        //     console.error('Error:', error);
+        // });
     }
 
     useEffect(() => {
@@ -35,14 +44,16 @@ const Licenses = () => {
             const axiosInstance = axios.create({
                 baseURL: 'http://192.168.0.107:5274/api', // Base URL of your backend API
                 headers: {
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json'
                     // other headers as needed
                 }
             });
+          
             axiosInstance.get('/Licenses/getLicenses')
-                .then(response => {
-                    console.log(response);
+                .then(res => {
+                    console.log(res);
+                    setLicense(res.data);
                 })
                 .catch(error => {
                     console.error('There was an error!', error);

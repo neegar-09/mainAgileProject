@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import * as Icon from 'react-bootstrap-icons';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import context from '../Context/context';
 
 const Header = (props) => {
+
+  let { user } = useContext(context);
+  console.log("user.firstName:", user.firstName);
+  console.log("localStorage.getItem('fullName'):", localStorage.getItem('fullName'));
+
+
   return (
     
       <Navbar fixed='top' expand="lg" style={{ backgroundColor: '#51B5C3', borderBottomLeftRadius: '20px', borderBottomRightRadius: '20px', padding: '20px 60px' }}>
@@ -18,8 +25,8 @@ const Header = (props) => {
           /> */}
             <Icon.PersonFill style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '10px' }} />
             <div>
-              <div>Name Surname</div>
-              <div>Username@agile.az</div>
+              <div>{user.firstName != null ? (user.firstName + ' ' + user.lastName): (localStorage.getItem('fullName'))}</div>
+              <div>{user.email}</div>
             </div>
           </div>
           <Nav className="ml-auto">

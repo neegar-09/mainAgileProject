@@ -1,12 +1,18 @@
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import BoxDetail from "../../Components/BoxDetail"
 import { Container, Row, Card, Col, Button } from "react-bootstrap"
 import Header from "../../Components/Header"
 import './ProductDetail.css';
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import context from "../../Context/context";
+import axios from "../../api/axios";
 
 
 const ProductDetail = () => {
+  let { token } = useContext(context);
+  const { id } = useParams()
+  console.log(id);
+
   const navigate = useNavigate();
   const [data, setData] = useState([
     {
@@ -32,6 +38,28 @@ const ProductDetail = () => {
     },
   ])
 
+
+  useEffect(() => {
+    return () => {
+      const axiosInstance = axios.create({
+        baseURL: 'http://192.168.0.107:5274/api', // Base URL of your backend API
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+          // other headers as needed
+        }
+      });
+      console.log(token);
+      axiosInstance.get(`/Licenses/GetByIdLicenses?LicensesId=${id}`)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(error => {
+          console.error('There was an error!', error);
+        });
+    };
+  }, []);
+
   const goBack = () => {
     navigate(-1);
   };
@@ -40,7 +68,7 @@ const ProductDetail = () => {
       <Header title='License Details' />
       <Container className="p-5" style={{ marginTop: '120px' }}>
         <Row>
-          <BoxDetail data={data}/>
+          <BoxDetail data={data} />
           <Col md={4} >
             <Card style={{ boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.5)' }} className='rounded-4 p-3 border-0' >
               <Card.Body>

@@ -4,13 +4,14 @@ import { Container, Row, Col } from 'react-bootstrap';
 import CompanyBox from '../Components/CompanyBox'
 import Box from '../Components/Box'
 import { useState, useContext } from 'react';
-import Context from '../Context/Context';
+import Context from '../Context/context';
 
 
 const Home = () => {
 
-    const { companies, setCompanies } = useContext(Context)
+    const { companies, setCompanies } = useContext(context)
     console.log(companies);
+
     return (
         <div style={{ height: '100vh' }}>
             <Header title="Home Page" />

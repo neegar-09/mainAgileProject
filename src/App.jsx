@@ -13,18 +13,32 @@ import ForgotPassword from './Pages/ForgotPassword';
 import ResetPage from './Pages/ResetPage';
 import CreateTicket from './Pages/CreateTicket/CreateTicket';
 import { useState } from 'react';
-import Context from './Context/Context';
+import context from './Context/context';
 
 function App() {
 
   let [token, setToken] = useState();
-  const [companies , setCompanies]= useState([]);
+
+  let [licences, setLicense] = useState([]);
+  let [companies, setCompanies] = useState([]);
+
+  let [user, setUser] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    companyName: '',
+  });
+
+
   let data = {
-    token,
-     setToken, 
-     companies ,
-     setCompanies
+    token, setToken,
+    licences, setLicense,
+    user, setUser,
+    companies,
+    setCompanies
   }
+
 
   return (
     <Context.Provider value={data}>
@@ -38,7 +52,7 @@ function App() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/home" element={<Home />} />
               <Route path="/licenses" element={<Licenses />} />
-              <Route path="/productDetail" element={<ProductDetail />} />
+              <Route path="/productDetail/:id" element={<ProductDetail />} />
               <Route path="/forgot" element={<ForgotPassword />} />
               <Route path="/reset/:id" element={<ResetPage />} />
               <Route path="/createTicket" element={<CreateTicket/>} />
