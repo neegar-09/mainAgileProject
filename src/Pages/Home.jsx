@@ -5,6 +5,8 @@ import CompanyBox from '../Components/CompanyBox'
 import Box from '../Components/Box'
 
 const Home = () => {
+
+
     return (
         <div style={{ height: '100vh' }}>
             <Header title="Home Page"/>

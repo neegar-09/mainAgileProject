@@ -19,8 +19,21 @@ function App() {
 
   let [token, setToken] = useState();
 
+  let [licences, setLicense] = useState([]);
+
+  let [user, setUser] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    companyName: '',
+  });
+
+
   let data = {
-    token, setToken
+    token, setToken,
+    licences, setLicense ,
+    user, setUser
   }
 
   return (
@@ -35,7 +48,7 @@ function App() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/home" element={<Home />} />
               <Route path="/licenses" element={<Licenses />} />
-              <Route path="/productDetail" element={<ProductDetail />} />
+              <Route path="/productDetail/:id" element={<ProductDetail />} />
               <Route path="/forgot" element={<ForgotPassword />} />
               <Route path="/reset/:id" element={<ResetPage />} />
               <Route path="/createTicket" element={<CreateTicket/>} />
