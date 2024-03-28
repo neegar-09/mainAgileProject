@@ -1,47 +1,51 @@
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import BoxDetail from "../../Components/BoxDetail"
 import { Container, Row, Card, Col, Button } from "react-bootstrap"
 import Header from "../../Components/Header"
 import './ProductDetail.css';
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import axios from "axios";
+import Context from "../../Context/Context";
 
 
 const ProductDetail = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState([
-    {
-      title: "Product",
-      feature1: "type",
-      feature2: "Subscription ID",
-      info1: "Dialer",
-      info2: "S2KM-AO4J-TMXA-ZCJI"
-    },
-    {
-      title: "Users",
-      feature1: "Total",
-      feature2: "Active currently:",
-      info1: "25",
-      info2: "18"
-    },
-    {
-      title: "Date",
-      feature1: "Order",
-      feature2: "Expiry",
-      info1: "29.09.2022",
-      info2: "29.09.2024"
-    },
-  ])
-
+  const token = localStorage.getItem('token')
+  const { id } = useParams()
+  const baseURL = import.meta.env.VITE_BASE_URL
+  let {productDetail , setProductDetail} = useContext(Context)
+  let{user , setUser} = useContext(Context)
+  console.log(user);
   const goBack = () => {
     navigate(-1);
   };
+
+  useEffect(() => {
+    fetchProductDetail()
+  }, []);
+
+  const fetchProductDetail = async () => {
+    try {
+        const response = await axios.get(`${baseURL}Licenses/GetByIdLicenses?LicensesId=${id}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        console.log('response', response.data);
+        setProductDetail(response.data)
+    } catch (error) {
+        console.error('fetchData error: ', error);
+    }
+}
+
+ const fetchUser = async ()=>{
+  
+ }
   return (
     <>
       <Header title='License Details' />
       <Container className="p-5" style={{ marginTop: '120px' }}>
         <Row>
-          <BoxDetail data={data}/>
-          <Col md={4} >
+          <BoxDetail/>
+          <Col md={4}>
             <Card style={{ boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.5)' }} className='rounded-4 p-3 border-0' >
               <Card.Body>
                 <Card.Title className='text-center mb-2 fw-bold'>Status</Card.Title>
@@ -60,7 +64,7 @@ const ProductDetail = () => {
                 <Row>
                   <Col md={6} >
                     <Card.Body className="d-flex flex-column align-items-center">
-                      <Card.Subtitle className="mb-2 fw-bold fs-5 mb-3">Company name : <span className='fw-normal'>PashaBank</span></Card.Subtitle>
+                      <Card.Subtitle className="mb-2 fw-bold fs-5 mb-3">Company name : <span className='fw-normal'>{user.companyName}</span></Card.Subtitle>
                       <Card.Subtitle className="mb-2 fw-bold fs-5 mb-3">Email : <span className='fw-normal'>pashabank@pasha.az</span></Card.Subtitle>
                     </Card.Body>
                   </Col>

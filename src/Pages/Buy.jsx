@@ -34,8 +34,8 @@ const Buy = () => {
 
 
     // const [numberValue, setNumberValue] = useState('');
-
     const handleNumberChange = (event) => {
+        console.log(event);
         // Ensure only positive numbers are allowed
         //    const value = event.target.value >= 0 ? event.target.value : Math.abs(event.target.value);
         //     // const value = event.target.value.replace(/\D/, ''); // Remove non-digit characters

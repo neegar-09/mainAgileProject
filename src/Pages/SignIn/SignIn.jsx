@@ -15,8 +15,9 @@ const defaultValues = {
 }
 
 const SignIn = () => {
+  const baseURL = import.meta.env.VITE_BASE_URL
   const navigate = useNavigate();
-  let { token, setToken } = useContext(Context);
+  let { user , setUser } = useContext(Context);
   let rememberMe = useRef(null);
   const [formValues, setFormValues] = useState({
     email: '',
@@ -37,9 +38,7 @@ const SignIn = () => {
     // Perform sign-in logic here (e.g., authentication)
     if (rememberMe.current.checked) {
       console.log('checked');
-      localStorage.setItem('token', 'user-token-123');
       localStorage.setItem('email', formValues.email);
-      localStorage.setItem('pass', formValues.pass);
     }
     console.log(formValues.rememberMe);
     console.log(formValues);
@@ -52,8 +51,33 @@ const SignIn = () => {
 
     }).then((res) => {
       console.log('response: ', res);
-      setToken(res.data.accessToken);
       localStorage.setItem('token', res.data.accessToken);
+      const token = localStorage.getItem('token');
+        try {
+            const resp = axios.get(`${baseURL}User/GetUser`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            })
+            resp.then((resp)=>{
+              console.log(resp); 
+              setUser({
+              firstName: resp.data.firstName,
+              lastName: resp.data.lastName,
+              email: resp.data.email,
+              phoneNumber: resp.data.phoneNumber,
+              companyName: resp.data.companyName,
+            });
+            localStorage.setItem('fullName', resp.data.firstName + ' ' + resp.data.lastName);
+            }).catch(err=>{
+              console.log(err);
+            })
+       
+           
+        } catch (error) {
+            console.error('fetchData error: ', error);
+        }
+    
+
+
     }).catch(error => {
       // Handle error
       console.error('Error:', error);

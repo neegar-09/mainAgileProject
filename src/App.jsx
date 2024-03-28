@@ -18,12 +18,30 @@ import Context from './Context/Context';
 function App() {
 
   let [token, setToken] = useState();
+  const [support, setSupport] = useState([])
   const [companies , setCompanies]= useState([]);
+  const [licences , setLicences]= useState([]);
+  const [user , setUser]= useState({
+    firstName : '',
+    lastName : '',
+    email: '',
+    phoneNumber: '',
+    companyName: '',
+  });
+  const [productDetail, setProductDetail] = useState({})
   let data = {
     token,
      setToken, 
      companies ,
-     setCompanies
+     setCompanies,
+     support,
+     setSupport,
+     licences,
+     setLicences,
+     user,
+     setUser,
+     productDetail,
+     setProductDetail
   }
 
   return (
@@ -38,7 +56,7 @@ function App() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/home" element={<Home />} />
               <Route path="/licenses" element={<Licenses />} />
-              <Route path="/productDetail" element={<ProductDetail />} />
+              <Route path="/productDetail/:id" element={<ProductDetail />} />
               <Route path="/forgot" element={<ForgotPassword />} />
               <Route path="/reset/:id" element={<ResetPage />} />
               <Route path="/createTicket" element={<CreateTicket/>} />

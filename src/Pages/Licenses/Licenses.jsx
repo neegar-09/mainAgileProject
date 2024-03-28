@@ -19,38 +19,31 @@ import Context from "../../Context/Context";
 
 // ASSETS
 import "./Licenses.css"
-
-
 const Licenses = () => {
 
-    let { token, setToken } = useContext(Context);
-
+    let { setLicences, licences } = useContext(Context);
+    const token = localStorage.getItem('token');
+    const baseURL = import.meta.env.VITE_BASE_URL
     const navigate = useNavigate();
     const goToBuy = () => {
         navigate('/buy');
     }
 
     useEffect(() => {
-        return () => {
-            const axiosInstance = axios.create({
-                baseURL: 'http://192.168.0.107:5274/api', // Base URL of your backend API
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                    // other headers as needed
-                }
-            });
-            axiosInstance.get('/Licenses/getLicenses')
-                .then(response => {
-                    console.log(response);
-                })
-                .catch(error => {
-                    console.error('There was an error!', error);
-                });
-            // console.log(token);
-            // axios.defaults.headers.common['Authorization'] = `Bearer ${token['token']}`
-        };
+        fetchData()
     }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${baseURL}Licenses/getLicenses`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            })
+            // console.log('response', response);
+            setLicences(response.data)
+        } catch (error) {
+            console.error('fetchData error: ', error);
+        }
+    }
 
     return (
         <>

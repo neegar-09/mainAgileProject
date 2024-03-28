@@ -1,40 +1,33 @@
 import Header from '../../Components/Header'
 import { Container, Table, Row, Col, Button } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState  } from 'react'
+import { useEffect  } from 'react'
+import { useContext } from "react";
+import Context from '../../Context/Context';
 import "./Support.css"
 import axios from 'axios'
 
 const Support = () => {
-    const baseURL = import.meta.env.BASE_URL
+    const baseURL = import.meta.env.VITE_BASE_URL
     const navigate = useNavigate();
     const token = localStorage.getItem('token')
-    const [support, setSupport] = useState([])
+    const { support, setSupport } = useContext(Context)
     useEffect(() => {
-        return () => {
-            const axiosInstance = axios.create({
-                baseURL: baseURL, // Base URL of your backend API
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                    // other headers as needed
-                }
-            });
-            axiosInstance.get('Ticket/getbyid')
-                .then(response => {
-                    setSupport(response.data)
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    console.error('There was an error!', error);
-                });
-            // console.log(token);
-            // axios.defaults.headers.common['Authorization'] = `Bearer ${token['token']}`
-        };
+        fetchData()  
     }, []);
-    
-   
 
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${baseURL}Ticket/getbyid`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            })
+            console.log('response', response);
+            setSupport(response.data)
+        } catch (error) {
+            console.error('fetchData error: ', error);
+        }
+    }
+    
     const goToCreateTicket = () => {
         navigate('/createTicket');
     }
