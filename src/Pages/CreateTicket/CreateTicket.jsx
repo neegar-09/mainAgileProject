@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const CreateTicket = () => {
 
   const navigate = useNavigate();
-
   const goBack = () => {
     navigate(-1);
   }
