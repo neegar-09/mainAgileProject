@@ -1,38 +1,42 @@
-import "./Licenses.css"
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { FaUserAlt } from "react-icons/fa";
-import { HiDotsVertical } from "react-icons/hi";
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
+// import { FaUserAlt } from "react-icons/fa";
+// import { HiDotsVertical } from "react-icons/hi";
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { FaFilter } from "react-icons/fa6";
+
+// Custom styles
 import TableComp from "../../Components/TableComp";
 import Header from "../../Components/Header";
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
 import { useContext, useEffect } from "react";
-import context from "../../Context/context";
+import Context from "../../Context/context";
+
+// ASSETS
+import "./Licenses.css"
+
 
 const Licenses = () => {
 
     let { token, setToken, setLicense, licences } = useContext(context);
 
     const navigate = useNavigate();
-
     const goToBuy = () => {
         navigate('/buy');
 
-        axios.post('http://192.168.0.107:5274/api/Licenses/GetByIdLicenses', ).then((res) => {
-            // console.log('response: ', res);
-            // console.log(res.data.accessToken);
+        // axios.post('http://192.168.0.107:5274/api/Licenses/GetByIdLicenses', ).then((res) => {
+        //     // console.log('response: ', res);
+        //     // console.log(res.data.accessToken);
             
-        }).catch(error => {
-            // Handle error
-            console.error('Error:', error);
-        });
+        // }).catch(error => {
+        //     // Handle error
+        //     console.error('Error:', error);
+        // });
     }
 
     useEffect(() => {
@@ -45,7 +49,7 @@ const Licenses = () => {
                     // other headers as needed
                 }
             });
-
+          
             axiosInstance.get('/Licenses/getLicenses')
                 .then(res => {
                     console.log(res);

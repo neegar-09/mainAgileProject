@@ -49,7 +49,7 @@ const ProductDetail = () => {
           // other headers as needed
         }
       });
-console.log(token);
+      console.log(token);
       axiosInstance.get(`/Licenses/GetByIdLicenses?LicensesId=${id}`)
         .then(res => {
           console.log(res);

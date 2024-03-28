@@ -1,18 +1,39 @@
-import React from 'react'
 import Header from '../../Components/Header'
 import { Container, Table, Row, Col, Button } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom"
+import { useEffect, useState  } from 'react'
 import "./Support.css"
-
+import axios from 'axios'
 
 const Support = () => {
+    const baseURL = import.meta.env.BASE_URL
     const navigate = useNavigate();
+    const token = localStorage.getItem('token')
+    const [support, setSupport] = useState([])
+    useEffect(() => {
+        return () => {
+            const axiosInstance = axios.create({
+                baseURL: baseURL, // Base URL of your backend API
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                    // other headers as needed
+                }
+            });
+            axiosInstance.get('Ticket/getbyid')
+                .then(response => {
+                    setSupport(response.data)
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                });
+            // console.log(token);
+            // axios.defaults.headers.common['Authorization'] = `Bearer ${token['token']}`
+        };
+    }, []);
     
-    const mockData = [
-        { title: 1, date: '2024', status: 'active', ticketId: '123456' },
-        { title: 2, date: '2024', status: 'active', ticketId: '123456' },
-        { title: 3, date: '2024', status: 'active', ticketId: '123456' }
-    ];
+   
 
     const goToCreateTicket = () => {
         navigate('/createTicket');
@@ -43,12 +64,12 @@ const Support = () => {
                             </tr>
                         </thead>
                         <tbody className='mg-5'>
-                            {mockData.map((item, index) => (
+                            {support?.map((item, index) => (
                                 <tr className="gray-bg" key={index}>
-                                    <td>{item.title}</td>
-                                    <td>{item.date}</td>
-                                    <td>{item.status}</td>
-                                    <td>{item.ticketId}</td>
+                                    <td>{item.subject}</td>
+                                    <td>{item.description}</td>
+                                    <td>{item.ticketStatus}</td>
+                                    <td>{item.ticketType}</td>
                                 </tr>
                             ))}
                         </tbody>

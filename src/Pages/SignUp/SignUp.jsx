@@ -11,16 +11,39 @@ import { FaBuilding } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { IoMdLock } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import {useState } from 'react';
+import axios from 'axios';
+
+
 
 
 const SignUp = () => {
-
   const navigate = useNavigate();
 
- const goToSignIn = () => {
+  const goToSignIn = () => {
     navigate('/signin');
   }
-
+  const [values, setValues] = useState({
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    password: '',
+    companyName: ''
+  })
+  // const baseURL = import.meta.env.BASE_URL
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try{
+    //  const response = await axios.post(`${baseURL}Auth/register`, values)
+    const response = await axios.post(`http://192.168.0.107:5274/api/Auth/register`, values)
+      console.log(response);
+      navigate("/")
+      location.reload()
+    }catch(error){
+      console.log(error);
+    }     
+  }
   return (
     <>
       <div className='p-5'>
@@ -42,44 +65,53 @@ const SignUp = () => {
               <Row>
                 <Col md={9} sm={12} className='d-flex flex-column align-items-center'>
                   <h1 className='sec-right-text text-center my-5'>Create account</h1>
-                  <Col md={9} sm={12} >
-                    <Form>
+                  <Col md={9} sm={12}>
+                    <Form onSubmit={handleSubmit}>
                       <Form.Group className="mb-4  position-relative" controlId="exampleForm.ControlInput1">
                         <FaUser className='position-absolute svg' />
-                        <Form.Control type="text" placeholder="First name" className='p-3 ps-5' />
+                        <Form.Control type="text" placeholder="First name" className='p-3 ps-5'
+                          onChange={e => setValues({ ...values, firstName: e.target.value })}
+                        />
                       </Form.Group>
 
                       <Form.Group className="mb-4 position-relative" controlId="exampleForm.ControlInput2">
                         <FaUser className='position-absolute svg' />
-                        <Form.Control type="text" placeholder="Last name" className='p-3 ps-5' />
+                        <Form.Control type="text" placeholder="Last name" className='p-3 ps-5'
+                          onChange={(e) => setValues({ ...values, lastName: e.target.value })} />
                       </Form.Group>
 
                       <Form.Group className="mb-4 position-relative" controlId="exampleForm.ControlInput3">
                         <MdEmail className='position-absolute svg' />
-                        <Form.Control type="email" placeholder="Email" className='p-3 ps-5' />
+                        <Form.Control type="email" placeholder="Email" className='p-3 ps-5'
+                          onChange={(e) => setValues({ ...values, email: e.target.value })}
+                        />
                       </Form.Group>
-
                       <Form.Group className="mb-4 position-relative" controlId="exampleForm.ControlInput4">
                         <FaBuilding className='position-absolute svg' />
-                        <Form.Control type="text" placeholder="Company name" className='p-3 ps-5' />
+                        <Form.Control type="text" placeholder="Company name" className='p-3 ps-5'
+                          onChange={(e) => setValues({ ...values, companyName: e.target.value })}
+
+                        />
                       </Form.Group>
 
                       <Form.Group className="mb-4 position-relative" controlId="exampleForm.ControlInput5">
                         <FaPhone className='position-absolute svg' />
-                        <Form.Control type="number" placeholder="+994(_ _)_ _ _ _ _ _ _" className='p-3 ps-5' />
+                        <Form.Control type="number" placeholder="+994(_ _)_ _ _ _ _ _ _" className='p-3 ps-5'
+                          onChange={(e) => setValues({ ...values, phoneNumber: e.target.value })}
+                        />
                       </Form.Group>
 
                       <Form.Group className="mb-4 position-relative" controlId="exampleForm.ControlInput6">
                         <IoMdLock className='position-absolute svg' />
-                        <Form.Control type="password" placeholder="Password" className='p-3 ps-5' />
+                        <Form.Control type="password" placeholder="Password" className='p-3 ps-5'
+                          onChange={(e) => setValues({ ...values, password: e.target.value })}
+                        />
                       </Form.Group>
-
                       <Col sm={7} className='mx-auto'>
-                        <Button variant="light" className='btn-signup text-white w-100 fs-5 shadow mb-5'>SIGN UP</Button>
+                        <Button variant="light" type='submit' className='btn-signup text-white w-100 fs-5 shadow mb-5'>SIGN UP</Button>
                       </Col>
                     </Form>
                   </Col>
-
                 </Col>
                 <Col sm={3} className=''>
                   <img src={logo} alt="logo" className='' />

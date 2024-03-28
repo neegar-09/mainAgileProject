@@ -18,8 +18,8 @@ import Context from './Context/context';
 function App() {
 
   let [token, setToken] = useState();
-
   let [licences, setLicense] = useState([]);
+
 
   let [user, setUser] = useState({
     firstName: '',
@@ -32,10 +32,8 @@ function App() {
 
   let data = {
     token, setToken,
-    licences, setLicense ,
-    user, setUser
+    companies, setCompanies
   }
-
   return (
     <Context.Provider value={data}>
       <>
@@ -51,8 +49,8 @@ function App() {
               <Route path="/productDetail/:id" element={<ProductDetail />} />
               <Route path="/forgot" element={<ForgotPassword />} />
               <Route path="/reset/:id" element={<ResetPage />} />
-              <Route path="/createTicket" element={<CreateTicket/>} />
-              <Route path="/buy" element={<Buy/>} />
+              <Route path="/createTicket" element={<CreateTicket />} />
+              <Route path="/buy" element={<Buy />} />
             </Routes>
           </BrowserRouter>
         </div>

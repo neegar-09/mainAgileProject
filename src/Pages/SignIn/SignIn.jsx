@@ -4,7 +4,7 @@ import * as Icon from 'react-bootstrap-icons';
 import { Link, useNavigate } from "react-router-dom"
 import logo from '../../assets/AGILE-SOLUTIONS-1-1024x725-1 2.png'
 import { useContext, useRef, useState, useEffect } from "react";
-import context from "../../Context/context";
+import Context from "../../Context/context";
 import './SignIn.css'
 import axios from "axios";
 
@@ -14,22 +14,17 @@ const defaultValues = {
   hoverColor: '#0991A4',
 }
 
-
 const SignIn = () => {
   const navigate = useNavigate();
 
-  let { token, setToken, setUser } = useContext(context);
+  let { token, setToken } = useContext(context);
   let rememberMe = useRef(null);
-
   const [formValues, setFormValues] = useState({
     email: '',
     pass: '',
     rememberMe: rememberMe,
   });
-
-
   const handleInputChange = (event) => {
-    console.log(event.target.name + '\n' + event.target.value);
     const { name, value } = event.target;
     setFormValues({
       ...formValues,
@@ -43,9 +38,9 @@ const SignIn = () => {
     // Perform sign-in logic here (e.g., authentication)
     if (rememberMe.current.checked) {
       console.log('checked');
-      localStorage.setItem('token', 'user-token-123');
+      // localStorage.setItem('token', 'user-token-123');
       localStorage.setItem('email', formValues.email);
-      localStorage.setItem('pass', formValues.pass);
+      // localStorage.setItem('pass', formValues.pass);
     }
  
     console.log(formValues.rememberMe);
@@ -53,6 +48,23 @@ const SignIn = () => {
 
     // const url = 'http://192.168.0.106:5274/api/Product/GetAllProducts';
     axios.post('http://192.168.0.107:5274/api/Auth/Login', {
+      email: formValues.email,
+      password: formValues.pass,
+      rememberMe: rememberMe.current.checked,
+
+    }).then((res) => {
+      console.log('response: ', res);
+      localStorage.setItem('token', res.data.accessToken);
+      // console.log(res.data.accessToken);
+      setToken(res.data.accessToken);
+    }).catch(error => {
+      // Handle error
+      console.error('Error:', error);
+    });
+
+
+     // const url = 'http://192.168.0.106:5274/api/Product/GetAllProducts';
+     axios.post('http://192.168.0.107:5274/api/Auth/Login', {
       email: formValues.email,
       password: formValues.pass,
       rememberMe: rememberMe.current.checked,
@@ -97,13 +109,12 @@ const SignIn = () => {
       // Handle error
       console.error('Error:', error);
     });
-
     // Redirect to home page after successful sign-in
   };
 
   useEffect(() => {
     return () => {
-      // const token = localStorage.getItem('token');
+      const token = localStorage.getItem('token');
       const email = localStorage.getItem('email');
       const pass = localStorage.getItem('pass');
       setFormValues({
