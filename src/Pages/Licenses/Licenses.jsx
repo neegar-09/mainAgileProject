@@ -1,8 +1,8 @@
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { FaUserAlt } from "react-icons/fa";
-import { HiDotsVertical } from "react-icons/hi";
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
+// import { FaUserAlt } from "react-icons/fa";
+// import { HiDotsVertical } from "react-icons/hi";
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row'
@@ -15,7 +15,7 @@ import Header from "../../Components/Header";
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
 import { useContext, useEffect } from "react";
-import context from "../../Context/context";
+import Context from "../../Context/Context";
 
 // ASSETS
 import "./Licenses.css"
@@ -23,10 +23,9 @@ import "./Licenses.css"
 
 const Licenses = () => {
 
-    let { token, setToken } = useContext(context);
+    let { token, setToken } = useContext(Context);
 
     const navigate = useNavigate();
-
     const goToBuy = () => {
         navigate('/buy');
     }
@@ -34,14 +33,13 @@ const Licenses = () => {
     useEffect(() => {
         return () => {
             const axiosInstance = axios.create({
-                baseURL: 'http://192.168.0.102:5274/api', // Base URL of your backend API
+                baseURL: 'http://192.168.0.107:5274/api', // Base URL of your backend API
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                     // other headers as needed
                 }
             });
-          
             axiosInstance.get('/Licenses/getLicenses')
                 .then(response => {
                     console.log(response);
