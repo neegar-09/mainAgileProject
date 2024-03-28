@@ -13,14 +13,17 @@ import ForgotPassword from './Pages/ForgotPassword';
 import ResetPage from './Pages/ResetPage';
 import CreateTicket from './Pages/CreateTicket/CreateTicket';
 import { useState } from 'react';
-import Context from './Context/context';
+import Context from './Context/Context';
 
 function App() {
 
   let [token, setToken] = useState();
-
+  const [companies , setCompanies]= useState([]);
   let data = {
-    token, setToken
+    token,
+     setToken, 
+     companies ,
+     setCompanies
   }
 
   return (

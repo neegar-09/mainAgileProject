@@ -11,7 +11,7 @@ import { FaBuilding } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { IoMdLock } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 import axios from 'axios';
 
 
@@ -31,17 +31,18 @@ const SignUp = () => {
     password: '',
     companyName: ''
   })
-
-  const handleSubmit = (event) => {
+  // const baseURL = import.meta.env.BASE_URL
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    
-    axios.post('http://192.168.0.102:5274/api/Auth/register', values)
-      .then(res => {
-        navigate("/")
-        location.reload()
-        console.log("res", res)
-      })
-      .catch(err => console.log(err))
+    try{
+    //  const response = await axios.post(`${baseURL}Auth/register`, values)
+    const response = await axios.post(`http://192.168.0.107:5274/api/Auth/register`, values)
+      console.log(response);
+      navigate("/")
+      location.reload()
+    }catch(error){
+      console.log(error);
+    }     
   }
   return (
     <>
